@@ -81,8 +81,15 @@ def readcsvdata(filename):
     x = []
     y = []
     for row in myreader:
-        x.append(row[0])
-        y.append(row[1])
+        try:
+            float(row[0])
+            float(row[1])
+            x.append(row[0])
+            y.append(row[1])
+        except ValueError:
+            print('row is not numerical values')
+
+        
     x = np.array([float(i) for i in x])
     y = np.array([float(i) for i in y])
     return x, y

@@ -104,9 +104,15 @@ class App(tk.Tk):
                 line_count = 0
                 for row in csv_reader:
                     # x, y data
-                    realData.append((row[0], row[1]))
-                    t.append(float(row[0]))
-                    data.append(float(row[1]))
+                    try:
+                        x = float(row[0])
+                        y = float(row[1])
+                        t.append(x)
+                        data.append(y)
+                        realData.append((row[0], row[1]))
+                    except ValueError:
+                        print('row is not numerical data')
+                    line_count += 1
                 print(f"Processed {line_count} lines.")
         except:
             tk.messagebox.showerror("Could not read file", "File was not found or able to be opened")

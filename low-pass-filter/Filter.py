@@ -19,8 +19,6 @@ class App(tk.Tk):
 
         self.plotData = {}
 
-        self.t = []
-        self.filteredData = []
         self.filePaths = []
 
         tk.Button(self, text="Select Files", command=lambda: self.selectFiles()).pack()
